@@ -1,20 +1,90 @@
 ﻿@page "/"
+@using MySql.Data.MySqlClient;
+@using PersonalSite_Replacement
+
+@code {
+	SQL_Connection? sql;
+	MySqlDataReader? names;
+	List<string> outputted = new();
+
+	const string SERVER = "localhost";
+	const string DATABASE = "names";
+	const string USER = "root";
+	const string PASSWORD = "password";
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+
+
+		sql = new(SERVER, USER, PASSWORD, DATABASE);
+
+		names = sql.RunSelectQuery("select * from names");
+		if (names != null)
+		{
+			while (names.Read())
+			{
+				outputted.Add((string)names[0]);
+			}
+		}
+		sql.CloseConn();
+	}
+	
+}
+
+<PageTitle>Bailey-Tyreese Dawson - Index</PageTitle>
 
 <HeadContent>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/shared.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
 </HeadContent>
-
-<div class="header">
-	<h1>Bailey-Tyreese Dawson</h1>
-</div>
-<div class="navBar">
-	<div class="navBarItem navBarSelected">Home</div>
-	<div class="navBarItem">Projects</div>
-	<div class="navBarItem">Contact</div>
-</div>
+<header>
+	<div class="header">
+		<div class="headerText">
+			<h1>Bailey-Tyreese Dawson</h1>
+		</div>
+		<img class="headerImageTag" src="img/ThePaganZone_Logo.png" />
+	</div>
+	<div class="navBar">
+		<div class="navBarItem navBarSelected">Home</div>
+		<div class="navBarItem">Projects</div>
+		<div class="navBarItem">Contact</div>
+	</div>
+</header>
 
 <div class="IndexContent">
-
-
+	<p>Welcome to my personal website. On here you can find a list of projects I have work on in my own time (and finished), general information about me, a blog which will contain
+		anything that I happen to find interesting. <br/>
+		There is also information about my twitch on which I occasionally stream and about the game I have been working on, InfiniHorde.<br />
+		I also create sites for people, if you are interested by this please look at my booking page, I can write them in PHP and C#. This site used to be in PHP but I have rewritten it all in C#.
+		To view the old PHP code for this site you can look in Projects and look at the original site project.
+	</p>
 </div>
+@{
+	if (names == null)
+	{
+		string error = "ERROR";
+		@error
+	}
+	else
+	{
+		foreach (var item in outputted)
+		{
+			string show = item + "\n";
+			@show
+		}
+	}
+}
+<footer>
+	<div class="footerCol">
+		<a href="https://www.linkedin.com/in/bailey-tyreese-dawson-50a67b195/">LinkedIn</a><br />
+		<a href="mailto:baileydawson@baileydawson.uk">Email</a><br />
+		<a href="https://github.com/dawson270500">GitHub</a>
+	</div>
+	<div class="footerCol">
+		<a href="https://www.twitch.tv/dawsonthepagan">Twitch</a><br />
+		<a href="https://gx.games/games/o24sf6/infinihorde">InfiniHorde Alpha</a><br />
+		<a href="https://discord.gg/z97A8Hkrzr">Discord</a>
+	</div>
+</footer>
