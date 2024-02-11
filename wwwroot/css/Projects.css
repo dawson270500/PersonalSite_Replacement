@@ -1,0 +1,31 @@
+﻿.projectBox {
+    text-align: center;
+    padding:1em;
+    margin:1em;
+    float: left;
+    width:40%;
+    background-color: silver;
+    border-radius: 6px;
+    
+}
+.projectBoxClear {
+    text-align: center;
+    padding: 1em;
+    margin: 1em;
+    clear: both;
+    width: 40%;
+    background-color: silver;
+    border-radius: 6px;
+}
+
+.projectImg{
+    width:25%;
+    height: auto;
+    max-height: 70%;
+}
+
+.boxHolder {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}

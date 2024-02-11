@@ -26,19 +26,23 @@ namespace PersonalSite_Replacement
 			catch (MySqlException ex)
 			{
 				conn = null;
-				Console.WriteLine("=== Error ===\nCould not connect to SQL DB");
+				Console.WriteLine("=== FATAL ===\nCould not connect to SQL DB");
+				FileLogger.WriteLine("=== FATAL ===\nCould not connect to SQL DB");
 				switch (ex.Number)
 				{
 					case 0:
-						Console.WriteLine("Error = SQL server error: " + ex.Message);
+						FileLogger.WriteLine("FATAL - SQL_Connection = SQL server error: " + ex.Message);
+						Console.WriteLine("FATAL = SQL server error: " + ex.Message);
 						break;
 
 					case 1045:
-						Console.WriteLine("Error = Invalid username or password: " + ex.Message);
+						FileLogger.WriteLine("FATAL - SQL_Connection = Invalid username or password: " + ex.Message);
+						Console.WriteLine("FATAL = Invalid username or password: " + ex.Message);
 						break;
 
 					default:
-						Console.WriteLine("Error = Unknown error: " + ex.Message);
+						FileLogger.WriteLine("FATAL - SQL_Connection = Unknown error: " + ex.Message);
+						Console.WriteLine("FATAL = Unknown error: " + ex.Message);
 						break;
 				}
 
@@ -57,6 +61,7 @@ namespace PersonalSite_Replacement
 			if (conn == null)
 			{
 				Console.WriteLine("Error = Connection is invalid");
+				FileLogger.WriteLine("Error - SQL_Connection = Connection is invalid");
 				return null;
 			}
 
@@ -74,7 +79,8 @@ namespace PersonalSite_Replacement
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("ERROR = SQL get name failed: " + ex.Message);
+				Console.WriteLine("ERROR = SQL select failed: " + ex.Message);
+				FileLogger.WriteLine("Error - SQL_Connection = SQL select failed " + ex.Message);
 				return null;
 			}
 		}

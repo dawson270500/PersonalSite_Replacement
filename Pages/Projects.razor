@@ -1,0 +1,63 @@
+﻿@page "/projects"
+
+@code {
+	private SQL_Connection sql = new("localhost", "root", "password", "personal");
+	private List<Dictionary<string, string>> toShow = new();
+
+	string name = "test";
+	string lang = "penis";
+	int id = 0;
+	string image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQempR1uxBG2s7-v7exoG3L-g-xb2zzp_mCkfIlHMQ25AN7FV";
+}
+
+<PageTitle>Bailey-Tyreese Dawson - Index</PageTitle>
+
+<HeadContent>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/shared.css" rel="stylesheet">
+	<link href="css/Projects.css" rel="stylesheet">
+</HeadContent>
+<Header currentPage="Projects" />
+
+<div class="boxHolder">
+	@{
+		MySql.Data.MySqlClient.MySqlDataReader? data = sql.RunSelectQuery("select * from project limit 3");
+
+		if (data == null)
+		{
+			FileLogger.WriteLine("Error = Error in DB, projects page");
+			Console.WriteLine("Error = Error in database");
+			throw new Exception("Error in database");
+		}
+
+		int count = 0;
+		while (data.Read())
+		{
+			string? id = data[0].ToString();
+			if (id == null) // log and skip anything that fails to load correctly
+			{
+				FileLogger.WriteLine("Warning = Failed to load SQL entry, projects page");
+				Console.WriteLine("Warning = Failed to load a SQL entry");
+				continue;
+			}
+			string image = (string)data[5];
+			string lang = (string)data[4];
+			string name = (string)data[1];
+
+			count++;
+			if (count == 4)
+			{
+				<ProjectBoxClear ID="@id" Image="@image" Lang="@lang" Name="@name" />
+				count = 0;
+			}
+			else
+			{
+				<ProjectBox ID="@id" Image="@image" Lang="@lang" Name="@name" />
+			}
+		}
+	}
+</div>
+
+
+
+<Footer />
