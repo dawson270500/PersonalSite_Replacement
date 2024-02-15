@@ -21,7 +21,7 @@
 
 <div class="boxHolder">
 	@{
-		MySql.Data.MySqlClient.MySqlDataReader? data = sql.RunSelectQuery("select * from project limit 3");
+		MySql.Data.MySqlClient.MySqlDataReader? data = sql.RunSelectQuery("select * from project");
 
 		if (data == null)
 		{
