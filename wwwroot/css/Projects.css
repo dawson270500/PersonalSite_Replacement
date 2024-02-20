@@ -1,27 +1,26 @@
 ﻿.projectBox {
     text-align: center;
-    padding:1em;
-    margin:1em;
-    width:40%;
+    padding: 1em;
+    margin: 0.5em;
+    width: 25em;
+    height: 17em;
     background-color: silver;
     border-radius: 6px;
 }
-.projectBoxFloat {
-    float: left;
-}
-.projectBoxClear {
-    clear: left;
-    display: block;
-}
 
-.projectImg{
+.projectImg {
     width:25%;
     height: auto;
     max-height: 70%;
 }
 
-.boxHolder {
-    align-content: center;
-    display: flex; 
+.boxHolder { /* Give the projects as much room as possible */
+    align-self: center;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }

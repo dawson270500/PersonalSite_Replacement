@@ -1,0 +1,12 @@
+﻿<div id="error" class="errorDisplay">
+	An error has occurred
+	<br />
+	@text
+	<br />
+	<a href="">Refresh</a>
+</div>
+
+@code {
+	[Parameter]
+	public string? text { get; set; }
+}

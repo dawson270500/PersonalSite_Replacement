@@ -1,4 +1,16 @@
-﻿<div class="projectBox projectBoxFloat">
+﻿@{
+    if (Name == null || Lang == null || Image == null || ID == null)
+    {
+        Name = "ERROR";
+        Lang = "ERROR";
+        Image = "ERROR";
+        ID = "ERROR";
+        FileLogger.WriteLine("Error = Values are null in project box, project box");
+        Console.WriteLine("Error = Values are null in project box");
+        <Error text="Error = Values are null in project box" />
+    }
+}
+<div class="projectBox projectBoxFloat">
     <h3>@Name</h3>
     <p>Language: @Lang</p>
     <img class="projectImg" src="@Image" />

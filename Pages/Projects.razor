@@ -27,7 +27,7 @@
 		{
 			FileLogger.WriteLine("Error = Error in DB, projects page");
 			Console.WriteLine("Error = Error in database");
-			throw new Exception("Error in database");
+			<Error text="Error in database" />
 		}
 
 		int count = 0;
@@ -44,20 +44,10 @@
 			string lang = (string)data[4];
 			string name = (string)data[1];
 
-			count++;
-			if (count == 4)
-			{
-				<ProjectBoxClear ID="@id" Image="@image" Lang="@lang" Name="@name" />
-				count = 0;
-			}
-			else
-			{
-				<ProjectBox ID="@id" Image="@image" Lang="@lang" Name="@name" />
-			}
+			<ProjectBox ID="@id" Image="@image" Lang="@lang" Name="@name" />
 		}
 	}
 </div>
-
-
+<br />
 
 <Footer />
