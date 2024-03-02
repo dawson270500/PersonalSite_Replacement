@@ -51,14 +51,27 @@ namespace PersonalSite_Replacement
 			Console.WriteLine("Successfully logged into SQL DB");
 		}
 
-		public void CloseConn()
+        ~SQL_Connection()
 		{
-			conn.Close();
+			conn?.Close();
+        }
+
+        /// <summary>
+        /// Close the connection to the database manually. This is done automatically anyway when a page is navigated away from
+        /// </summary>
+        public void CloseConn()
+		{
+			conn?.Close();
 		}
 
+		/// <summary>
+		/// Selects data from the database that this is connected to
+		/// </summary>
+		/// <param name="query">Query to use to select</param>
+		/// <returns>DataReader of what was selected</returns>
 		public MySqlDataReader? RunSelectQuery(string query)
 		{
-			if (conn == null)
+			if (conn is null)
 			{
 				Console.WriteLine("Error = Connection is invalid");
 				FileLogger.WriteLine("Error - SQL_Connection = Connection is invalid");
@@ -84,6 +97,42 @@ namespace PersonalSite_Replacement
 				return null;
 			}
 		}
-		
-	}
+
+		/// <summary>
+		/// Run an insert query for data
+		/// </summary>
+		/// <param name="query">Query to run</param>
+		/// <returns>True if success, false if failed</returns>
+        public bool RunInsertQuery(string query)
+        {
+            if (conn == null)
+            {
+                Console.WriteLine("Error = Connection is invalid");
+                FileLogger.WriteLine("Error - SQL_Connection = Connection is invalid");
+                return false;
+            }
+
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new()
+                {
+                    CommandText = query,
+                    Connection = conn
+                };
+				if (0 < cmd.ExecuteNonQuery())
+				{
+					return true;
+				}
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR = SQL insert failed: " + ex.Message);
+                FileLogger.WriteLine("Error - SQL_Connection = SQL insert failed " + ex.Message);
+                return false;
+            }
+        }
+    }
 }

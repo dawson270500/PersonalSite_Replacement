@@ -1,0 +1,2 @@
+del C:\Users\aaa\source\repos\PersonalSite_Replacement\SQL_DUMP.sql
+"C:\Program Files\MySQL\MySQL Server 8.3\bin\mysqldump.exe" -u root -p personal> C:\Users\aaa\source\repos\PersonalSite_Replacement\SQL_DUMP.sql

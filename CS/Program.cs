@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-Console.WriteLine("Preparing application enviroment");
+Console.WriteLine("Preparing application environment");
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
