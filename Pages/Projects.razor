@@ -1,13 +1,9 @@
 ﻿@page "/projects"
+@using PersonalSite_Replacement.Component
 
 @code {
 	private SQL_Connection sql = new("localhost", "root", "password", "personal");
 	private List<Dictionary<string, string>> toShow = new();
-
-	string name = "test";
-	string lang = "penis";
-	int id = 0;
-	string image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQempR1uxBG2s7-v7exoG3L-g-xb2zzp_mCkfIlHMQ25AN7FV";
 }
 
 <PageTitle>Bailey-Tyreese Dawson - Projects</PageTitle>
@@ -30,8 +26,7 @@
 			<Error text="Error in database" />
 		}
 
-		int count = 0;
-		while (data.Read())
+		while (data is not null && data.Read())
 		{
 			string? id = data[0].ToString();
 			if (id == null) // log and skip anything that fails to load correctly

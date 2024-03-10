@@ -1,5 +1,6 @@
 ﻿@page "/contact"
 @using Microsoft.AspNetCore.Components.Forms
+@using PersonalSite_Replacement.Component
 @using System.ComponentModel.DataAnnotations
 
 <PageTitle>Bailey-Tyreese Dawson - Contact</PageTitle>
@@ -12,18 +13,12 @@
 
 <Header currentPage="contact" />
 
-<p>To get in contact with me please fill out the contact form below</p>
-<span>@output</span>
-<EditForm Model="ContactForm" OnValidSubmit="Submit">
-    <label>
-        <InputText class="BasicInput" @bind-Value="ContactForm!.Name" placeholder="Name..."/>
-    </label><br />
-    <label>
-        <InputText class="BasicInput" @bind-Value="ContactForm!.Email" placeholder="Email..." />
-    </label><br />
-    <label>
-        <textarea class="ComplexInput" @bind="ContactForm!.Message" placeholder="Message..."> </textarea>
-    </label>
+<EditForm Model="ContactForm" OnValidSubmit="Submit" class="contactForm">
+    <p>To get in contact with me please fill out the contact form below</p>
+    <p><span>@output</span></p>
+    <InputText class="BasicInput" @bind-Value="ContactForm!.Name" placeholder="Name..."/><br />
+    <InputText class="BasicInput" @bind-Value="ContactForm!.Email" placeholder="Email..." /><br />
+    <textarea class="ComplexInput" @bind="ContactForm!.Message" placeholder="Message..."> </textarea><br />
     <button type="submit">Submit</button>
 </EditForm>
 

@@ -1,6 +1,25 @@
-﻿.BasicInput {
-
+﻿.contactForm {
+    text-align: center;
+    align-content: center;
 }
-.ComplexInput {
 
+.BasicInput {
+    margin: 1em;
+    text-align: center;
+    width: 25em;
+    height: 2em;
+    border-radius: 1em;
+    caret-color: transparent;
+}
+
+.ComplexInput {
+    margin: 1em;
+    text-align: center;
+    width: 25em;
+    height: 5em;
+    border-radius: 1em;
+    resize: none;
+    caret-color: black;
+    caret: bar;
+    animation: typing 3.5s steps(0, end), blink-caret .0s step-end;
 }
