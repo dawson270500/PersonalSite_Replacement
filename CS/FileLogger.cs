@@ -2,7 +2,7 @@
 {
 	public class FileLogger
 	{
-		const string LOG_FILE = "C://logs//log.txt";
+		const string LOG_FILE = ".//logs//log.txt";
 
 		public static void WriteLine(string line)
 		{

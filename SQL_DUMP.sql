@@ -20,8 +20,6 @@
 --
 
 DROP TABLE IF EXISTS `contactform`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contactform` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
@@ -30,9 +28,7 @@ CREATE TABLE `contactform` (
   `Viewed` int NOT NULL DEFAULT '0',
   `TimeStamp` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
+) AUTO_INCREMENT=2;
 --
 -- Dumping data for table `contactform`
 --
@@ -48,19 +44,15 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `project`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `project` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Text` text NOT NULL,
-  `Link` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Link` text NOT NULL,
   `Lang` text NOT NULL,
   `Img` varchar(255) NOT NULL DEFAULT 'https://www.computerhope.com/jargon/p/program.png',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
+) AUTO_INCREMENT=8;
 --
 -- Dumping data for table `project`
 --
