@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.3.0, for Win64 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: personal
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	10.6.16-MariaDB-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -20,15 +20,19 @@
 --
 
 DROP TABLE IF EXISTS `contactform`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contactform` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Email` text NOT NULL,
   `Message` text NOT NULL,
-  `Viewed` int NOT NULL DEFAULT '0',
+  `Viewed` int(11) NOT NULL DEFAULT 0,
   `TimeStamp` text NOT NULL,
   PRIMARY KEY (`ID`)
-) AUTO_INCREMENT=2;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Dumping data for table `contactform`
 --
@@ -44,22 +48,26 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `project` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Text` text NOT NULL,
   `Link` text NOT NULL,
   `Lang` text NOT NULL,
   `Img` varchar(255) NOT NULL DEFAULT 'https://www.computerhope.com/jargon/p/program.png',
   PRIMARY KEY (`ID`)
-) AUTO_INCREMENT=8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Dumping data for table `project`
 --
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'example 1','really cool example','www.google.com','penis script','https://external-preview.redd.it/y9H8wFuaGD_p2pq2N8nB30bIsbsYM1z0p5Spkr8UDXI.png?auto=webp&s=c793a80d3f2f9ed36adb005724383a3ec8d34610'),(2,'test 2','this is a really really good','www.wikipedia.com','somethign or other','https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTfz3tIfnYqrELwrTFI1kvqcV1n9QYB6HMzJIRf57E5N9I_at2B5MVpuKpK5fnfJWz3n1ZP-hQ8U0avEuU'),(3,'Freddie is a cat','something something','www.google.com','Brainless','https://media.discordapp.net/attachments/1116475190688358572/1122199704550252644/IMG_20230624_171955.jpg?ex=65da176b&is=65c7a26b&hm=b133c82dabf6e9dd42cb774898f335262596d9303efacdfdf884433c2ffe259c&=&format=webp&width=374&height=499'),(4,'Freddie is a cat','something something','www.google.com','Brainless','https://media.discordapp.net/attachments/1116475190688358572/1122199704550252644/IMG_20230624_171955.jpg?ex=65da176b&is=65c7a26b&hm=b133c82dabf6e9dd42cb774898f335262596d9303efacdfdf884433c2ffe259c&=&format=webp&width=374&height=499'),(5,'Freddie is a cat','something something','www.google.com','Brainless','https://media.discordapp.net/attachments/1116475190688358572/1122199704550252644/IMG_20230624_171955.jpg?ex=65da176b&is=65c7a26b&hm=b133c82dabf6e9dd42cb774898f335262596d9303efacdfdf884433c2ffe259c&=&format=webp&width=374&height=499'),(6,'Freddie is a cat','something something','www.google.com','Brainless','https://media.discordapp.net/attachments/1116475190688358572/1122199704550252644/IMG_20230624_171955.jpg?ex=65da176b&is=65c7a26b&hm=b133c82dabf6e9dd42cb774898f335262596d9303efacdfdf884433c2ffe259c&=&format=webp&width=374&height=499'),(7,'Freddie is a cat','something something','www.google.com','Brainless','https://media.discordapp.net/attachments/1116475190688358572/1122199704550252644/IMG_20230624_171955.jpg?ex=65da176b&is=65c7a26b&hm=b133c82dabf6e9dd42cb774898f335262596d9303efacdfdf884433c2ffe259c&=&format=webp&width=374&height=499');
+INSERT INTO `project` VALUES (1,'example 1','really cool example','www.google.com','penis script','https://external-preview.redd.it/y9H8wFuaGD_p2pq2N8nB30bIsbsYM1z0p5Spkr8UDXI.png?auto=webp&s=c793a80d3f2f9ed36adb005724383a3ec8d34610'),(2,'test 2','this is a really really good','www.wikipedia.com','somethign or other','https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTfz3tIfnYqrELwrTFI1kvqcV1n9QYB6HMzJIRf57E5N9I_at2B5MVpuKpK5fnfJWz3n1ZP-hQ8U0avEuU'),(3,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(4,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(5,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(6,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(7,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -72,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-02 19:56:09
+-- Dump completed on 2024-03-12 21:33:49
