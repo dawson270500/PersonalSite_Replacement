@@ -13,6 +13,9 @@
 
 	string InfiniHordeSelPage = "<div class=\"navBarItem navBarSelected\"><a href=\"infiniHorde\">Infini Horde</a></div>";
 	string InfiniHordePage = "<div class=\"navBarItem\"><a href=\"infiniHorde\">Infini Horde</a></div>";
+
+	string TrainSelPage = "<div class=\"navBarItem navBarSelected\"><a href=\"trains\">Trains</a></div>";
+	string TrainPage = "<div class=\"navBarItem\"><a href=\"trains\">Trains</a></div>";
 }
 
 <div class="header">
@@ -34,6 +37,7 @@
 		@((MarkupString)projectPage)
 		@((MarkupString)contactPage)
 		@((MarkupString)InfiniHordePage)
+		@((MarkupString)TrainPage)
 	} 
 	else if (currentPage.ToLower() == "projects")
 	{
@@ -41,6 +45,7 @@
 		@((MarkupString)projectSelPage)
 		@((MarkupString)contactPage)
 		@((MarkupString)InfiniHordePage)
+		@((MarkupString)TrainPage)
 	}
 	else if (currentPage.ToLower() == "contact")
 	{
@@ -48,13 +53,23 @@
 		@((MarkupString)projectPage)
 		@((MarkupString)contactSelPage)
 		@((MarkupString)InfiniHordePage)
+		@((MarkupString)TrainPage)
 	}
-	else if (currentPage.ToLower() == "infini_horde")
+	else if (currentPage.ToLower() == "infinihorde")
 	{
 		@((MarkupString)indexPage)
 		@((MarkupString)projectPage)
 		@((MarkupString)contactPage)
 		@((MarkupString)InfiniHordeSelPage)
+		@((MarkupString)TrainPage)
+	}
+	else if (currentPage.ToLower() == "trains")
+	{
+		@((MarkupString)indexPage)
+		@((MarkupString)projectPage)
+		@((MarkupString)contactPage)
+		@((MarkupString)InfiniHordePage)
+		@((MarkupString)TrainSelPage)
 	}
 	else
 	{
