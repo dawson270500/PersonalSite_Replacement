@@ -4,6 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 admin_pass.txt
+db_server.txt
+db_user.txt
+db_password.txt
 
 # User-specific files
 *.rsuser

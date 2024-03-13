@@ -25,7 +25,7 @@
 <Footer />
 
 @code {
-    private SQL_Connection sql = new("localhost", "root", "password", "personal");
+    private SQL_Connection sql = new(DB_DETAILS.db_server, DB_DETAILS.db_user, DB_DETAILS.db_password, "personal");
 
     public FormInput ContactForm { get; set; } = new();
     public string output { get; set; } = "";

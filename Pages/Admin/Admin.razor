@@ -23,21 +23,20 @@
 </EditForm>
 
 <p>If you entered a valid password, below you will see a contact request</p>
-ID: @id <br />
-Name: @name <br />
-Email: @email <br />
-Message: @message <br />
-Time stamp: @time
-<br />
 @output_text
-
 <EditForm Model="NextBut" OnValidSubmit="Next">
     <button type="submit">Next Request</button>
 </EditForm>
+<input style="width: 25%;" type="text" value="@id" placeholder="Id..." disabled /> <br />
+<input style="width: 25%;" type="text" value="@name" placeholder="Name..." disabled /> <br />
+<input style="width: 25%;" type="text" value="@email" placeholder="Email..." disabled /> <br />
+<input style="width: 25%;" type="text" value="@time" placeholder="TimeStamp..." disabled /> <br />
+<textarea style="height: 30%; width: 25%;" disabled placeholder="Message...">@message</textarea>
+<br />
 
 @code {
     // SQL and forms
-    private SQL_Connection sql = new("localhost", "root", "password", "personal");
+    private SQL_Connection sql = new(DB_DETAILS.db_server, DB_DETAILS.db_user, DB_DETAILS.db_password, "personal");
     public FormInput Password_Check { get; set; } = new();
     public FakeForm NextBut { get; set; } = new();
     // Data binding

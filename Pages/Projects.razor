@@ -2,7 +2,7 @@
 @using PersonalSite_Replacement.Component
 
 @code {
-	private SQL_Connection sql = new("localhost", "root", "password", "personal");
+	private SQL_Connection sql = new(DB_DETAILS.db_server, DB_DETAILS.db_user, DB_DETAILS.db_password, "personal");
 	private List<Dictionary<string, string>> toShow = new();
 }
 
