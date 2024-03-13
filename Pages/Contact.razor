@@ -35,7 +35,7 @@
         Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new
         DateTime(1970, 1, 1))).TotalSeconds;
 
-        if (sql.RunInsertQuery("INSERT INTO `ContactForm`(`Name`, `Email`, `Message`, `Viewed`, `TimeStamp`) VALUES ('" + ContactForm.Name
+        if (sql.RunQuery("INSERT INTO `ContactForm`(`Name`, `Email`, `Message`, `Viewed`, `TimeStamp`) VALUES ('" + ContactForm.Name
         + "', '" + ContactForm.Email + "', '" + ContactForm.Message + "', '0', '" + unixTimestamp + "')"))
         {
             output = "Thank you for submitting a request";

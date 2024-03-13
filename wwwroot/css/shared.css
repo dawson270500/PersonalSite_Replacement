@@ -108,28 +108,17 @@ footer {
     font-size: 0.9em;
     display: inline-block;
 }
+@media only screen and (max-width: 768px) {
+    .footerColHide {
+        display: none;
+    }
+}
 
 /* Link style */
-a{
+a {
     text-decoration: none;
     color: black;
 }
 a:hover {
     color: grey;
-}
-
-.errorDisplay {
-    position: fixed;
-    bottom: 0;
-    border: 1px solid black;
-    align-self: center;
-    align-content: center;
-}
-
-.errorButton {
-    position: fixed;
-    bottom: 0;
-    border: 1px solid black;
-    align-self: center;
-    align-content: center;
 }

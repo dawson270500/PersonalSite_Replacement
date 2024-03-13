@@ -31,6 +31,18 @@
 		Console.WriteLine("Error = Invalid page tried to load header");
 		@("Error while creating header")
 	} 
+	else if (currentPage.ToLower() == "error")
+	{
+		@((MarkupString)indexPage)
+		@((MarkupString)projectPage)
+		@((MarkupString)contactPage)
+		@((MarkupString)InfiniHordePage)
+		@((MarkupString)TrainPage)
+	}
+	else if (currentPage.ToLower() == "admin")
+	{
+		@((MarkupString)indexPage)
+	}
 	else if (currentPage.ToLower() == "index")
 	{
 		@((MarkupString)indexSelPage)

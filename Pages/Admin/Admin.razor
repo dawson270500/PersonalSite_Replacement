@@ -1,0 +1,137 @@
+﻿@page "/admin"
+@using Microsoft.AspNetCore.Components.Forms
+@using PersonalSite_Replacement.Component
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Bailey-Tyreese Dawson - Admin</PageTitle>
+
+<HeadContent>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/shared.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+</HeadContent>
+<Header currentPage="admin" />
+@code {
+	string admin_pass = File.ReadAllText("admin_pass.txt");
+}
+<p>Welcome to the danger zone.....</p>
+
+
+<EditForm Model="Password_Check" OnValidSubmit="Submit">
+    <InputText @bind-Value="Password_Check!.Pass" placeholder="Password..."/><br />
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>If you entered a valid password, below you will see a contact request</p>
+ID: @id <br />
+Name: @name <br />
+Email: @email <br />
+Message: @message <br />
+Time stamp: @time
+<br />
+@output_text
+
+<EditForm Model="NextBut" OnValidSubmit="Next">
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    // SQL and forms
+    private SQL_Connection sql = new("localhost", "root", "password", "personal");
+    public FormInput Password_Check { get; set; } = new();
+    public FakeForm NextBut { get; set; } = new();
+    // Data binding
+    public string id { get; set; } = "";
+    public string name { get; set; } = "";
+    public string email { get; set; } = "";
+    public string message { get; set; } = "";
+    public string time { get; set; } = "";
+    public string output_text { get; set; } = "";
+    // Hold all requests
+    private List<Dictionary<String, String>> CONTACTS = new();
+    private int index = -1;
+
+    private void Submit()
+    {
+        if (index != -1)
+        { // To stop DB spam
+            return; 
+        }
+
+        if(admin_pass != Password_Check.Pass)
+        { // Give 0 feedback when the answer is wrong
+            return;
+        }
+
+        // Grab the data from DB
+        MySql.Data.MySqlClient.MySqlDataReader? data = sql.RunSelectQuery("SELECT `ID`, `Name`, `Email`, `Message`, `Viewed`, `TimeStamp` FROM ContactForm WHERE Viewed=0");
+        while (data is not null && data.Read())
+        {
+            Dictionary<String, String> AddMe = new();
+            AddMe.Add("ID", ((int)data[0]).ToString());
+            AddMe.Add("Name", (string)data[1]);
+            AddMe.Add("Email", (string)data[2]);
+            AddMe.Add("Message", (string)data[3]);
+            AddMe.Add("TimeStamp", (string)data[5]);
+
+            CONTACTS.Add(AddMe);
+        }
+        sql.CloseConn();
+
+        if (CONTACTS.Count == 0) {
+            output_text = "There are no contact requests waiting to be viewed";
+            index = -2;
+            return;
+        }
+
+        // Pre load first entry
+        id = CONTACTS[0]["ID"];
+        name = CONTACTS[0]["Name"];
+        email = CONTACTS[0]["Email"];
+        message = CONTACTS[0]["Message"];
+        time = CONTACTS[0]["TimeStamp"];
+        index = 0;
+    }
+
+    private void Next()
+    {
+        if (index == -1) // Password not entered yet
+        {
+            return;
+        }
+
+        // Mark that as viewed
+        string query = "UPDATE ContactForm SET `Viewed`=1 WHERE ID=" + CONTACTS[index]["ID"];
+        if (!sql.RunQuery(query))
+        {
+            output_text = "Failed to update SQL";
+            return;
+        }
+        sql.CloseConn();
+
+        index++;
+        if (index > CONTACTS.Count -1) {
+            output_text = "You have reached the end of current contact requests";
+            return; // Past end of the list
+        }
+
+        id = CONTACTS[index]["ID"];
+        name = CONTACTS[index]["Name"];
+        email = CONTACTS[index]["Email"];
+        message = CONTACTS[index]["Message"];
+        time = CONTACTS[index]["TimeStamp"];
+    }
+
+    public class FormInput
+    {
+        [Required]
+        public string? Pass { get; set; }
+    }
+    public class FakeForm
+    {
+        public string? DO_NOT_SET { get; set; }
+    }
+}
+
+<Footer />
+

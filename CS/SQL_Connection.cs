@@ -103,7 +103,7 @@ namespace PersonalSite_Replacement
 		/// </summary>
 		/// <param name="query">Query to run</param>
 		/// <returns>True if success, false if failed</returns>
-        public bool RunInsertQuery(string query)
+        public bool RunQuery(string query)
         {
             if (conn == null)
             {
