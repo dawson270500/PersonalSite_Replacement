@@ -1,6 +1,6 @@
 # PersonalSite_Replacement
 
-I am rewriting my personak site in c# blazor.
+I am rewriting my personal site in c# blazor.
 This is the code in its current state plus an SQL dump of the in development db. 
 
 ## Set-up
