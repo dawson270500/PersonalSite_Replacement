@@ -1,0 +1,53 @@
+﻿@page "/games/space_invaders_old"
+@using PersonalSite_Replacement.Component
+@namespace PersonalSite_Replacement.Pages
+
+
+<head>
+	<title>Bailey-Tyreese Dawson - Space Invaders</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../css/shared.css" rel="stylesheet">
+	<link href="../css/index.css" rel="stylesheet">
+</head>
+<div class="header">
+	<div class="headerText">
+		<h1>Bailey-Tyreese Dawson</h1>
+	</div>
+	<img class="headerImageTag" src="../img/ThePaganZone_Logo.png" />
+</div>
+<div class="navBar">
+	<div class="navBarItem"><a href="/">Home</a></div>
+</div>
+<div style="margin-bottom: 10%;	">
+	<p>This is a recreation of the game space invaders, I wrote this a long time ago when I was 17. The code is available to view on GitHub if you click <a href="">here</a>. <br>This game did used to upload high scores to a database, I can no longer recreate that as it was written in PHP and didn't really work anymore</p>
+	<div style="padding:1%;">
+		<button onclick="window.location.reload();">Reset game</button>
+		<button onclick="alert('Left - Left Arrow\nRight - Right Arrow\nShoot - Control\nPause/Unpause - P');">Display Controls</button>
+		<p>Game Starts Paused</p>
+		<br><canvas id="myCanvas"></canvas>
+
+		<script src="../JS/SpaceInvade_Old_code.js"></script>
+		<script type="text/javascript">
+			//Start game
+			var loop = setInterval(move, mSpeed);
+		</script>
+
+	</div>
+</div>
+
+<footer>
+	<div class="footerCol">
+		<a href="https://www.linkedin.com/in/bailey-tyreese-dawson-50a67b195/">LinkedIn</a><br />
+		<a href="https://github.com/dawson270500">GitHub</a>
+	</div>
+	<div class="footerCol">
+		<a href="https://www.twitch.tv/dawsonthepagan">Twitch</a><br />
+		<a href="https://gx.games/games/o24sf6/infinihorde">InfiniHorde Alpha</a><br />
+	</div>
+	<div class="footerColHide footerCol">
+		<p>
+			Written by Bailey-Tyreese Dawson<br />
+			All content is used with permission or is original
+		</p>
+	</div>
+</footer>
