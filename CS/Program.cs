@@ -1,19 +1,19 @@
 using PersonalSite_Replacement;
-// using Microsoft.AspNetCore.Authentication.Certificate;
+using Microsoft.AspNetCore.Authentication.Certificate;
 
 Console.WriteLine("Building pages");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-// builder.Services.AddAuthentication(
-   //     CertificateAuthenticationDefaults.AuthenticationScheme)
-   // .AddCertificate();
+ builder.Services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+    .AddCertificate();
 
 Console.WriteLine("Preparing application environment");
 var app = builder.Build();
 
-// app.UseAuthentication();
+app.UseAuthentication();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
