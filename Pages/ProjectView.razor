@@ -1,0 +1,86 @@
+﻿@page "/projectView/{ID}"
+@using PersonalSite_Replacement.Component
+
+@code {
+	private SQL_Connection sql = new(DB_DETAILS.db_server, DB_DETAILS.db_user, DB_DETAILS.db_password, "personal");
+	private List<Dictionary<string, string>> toShow = new();
+}
+
+<PageTitle>Bailey-Tyreese Dawson - Projects</PageTitle>
+
+<HeadContent>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/shared.css" rel="stylesheet">
+	<link href="css/Projects.css" rel="stylesheet">
+</HeadContent>
+<Header currentPage="Projects" />
+<div class="projectViewMain">
+	<h1>@name</h1>
+	<p>Language: @lang</p>
+	@{
+		if (link != "") {
+			<a href="@link" target="_blank" rel="noopener">View project</a>
+		}
+		else
+		{
+			<p>You cannot view this project live. See the description for more info</p>
+		}
+	}
+	<p>@((MarkupString)text)</p>
+	@{
+		if (image != "https://www.computerhope.com/jargon/p/program.png" && !text.Contains("<img")) {
+			@((MarkupString)"<img src=" + image +" /> <!-- Outputted by C# -->")
+		}
+	}
+	
+</div>
+<br />
+
+<Footer />
+
+@code {
+	[Parameter]
+	public string ID { get; set; }
+
+	public string name { get; set; } = "";
+	public string text { get; set; } = "";
+	public string link { get; set; } = "";
+	public string lang { get; set; } = "";
+	public string image { get; set; } = "";
+
+	protected override async Task OnInitializedAsync()
+	{
+		MySql.Data.MySqlClient.MySqlDataReader? data = sql.RunSelectQuery("SELECT Name, Text, Link, Lang, Img FROM `project` where ID="+ID);
+
+		if (data == null)
+		{
+			FileLogger.WriteLine("Error = Error in DB, projects page");
+			Console.WriteLine("Error = Error in database");
+			throw new Exception();
+		}
+
+		if (data.Read())
+		{
+			name = data[0] as string;
+			if (name == null) // Log and show to user the failure
+			{
+				FileLogger.WriteLine("Warning = Failed to load SQL entry, project view page. Value is null");
+				Console.WriteLine("Warning = Failed to load a SQL entry.  Value is null");
+				throw new Exception();
+				return;
+			}
+			text = data[1] as string;
+			link = data[2] as string;
+			lang = data[3] as string;
+			image = data[4] as string;
+
+		} else
+		{
+			FileLogger.WriteLine("Warning = Failed to load SQL entry, projects page. No data loaded");
+			Console.WriteLine("Warning = Failed to load a SQL entry. No data loaded");
+			throw new Exception();
+		}
+
+		sql.CloseConn();
+	}
+}

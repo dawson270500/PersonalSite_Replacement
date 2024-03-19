@@ -1,11 +1,16 @@
 ﻿.projectBox {
     text-align: center;
-    padding: 1em;
+    padding: 0.2em;
     margin: 0.5em;
     width: 25em;
-    height: 17em;
+
     background-color: silver;
     border-radius: 6px;
+}
+
+a.project {
+    text-decoration: none;
+    color: inherit;
 }
 
 .projectImg {
@@ -21,7 +26,11 @@
     margin: 0%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 5%;
+}
+
+.projectViewMain {
+    margin: 0%;
     margin-bottom: 5%;
 }
