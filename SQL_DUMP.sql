@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 8.3.0, for Win64 (x86_64)
 --
 -- Host: localhost    Database: personal
 -- ------------------------------------------------------
--- Server version	10.6.16-MariaDB-0ubuntu0.22.04.1
+-- Server version	8.3.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,16 +21,16 @@
 
 DROP TABLE IF EXISTS `contactform`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contactform` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` text NOT NULL,
-  `Email` text NOT NULL,
-  `Message` text NOT NULL,
-  `Viewed` int(11) NOT NULL DEFAULT 0,
-  `TimeStamp` text NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Viewed` int NOT NULL DEFAULT '0',
+  `TimeStamp` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,9 +38,7 @@ CREATE TABLE `contactform` (
 --
 
 LOCK TABLES `contactform` WRITE;
-/*!40000 ALTER TABLE `contactform` DISABLE KEYS */;
-INSERT INTO `contactform` VALUES (1,'name','email','message',0,'1709408633');
-/*!40000 ALTER TABLE `contactform` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -49,14 +47,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `project`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `project` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` text NOT NULL,
-  `Text` text NOT NULL,
-  `Link` text NOT NULL,
-  `Lang` text NOT NULL,
-  `Img` varchar(255) NOT NULL DEFAULT 'https://www.computerhope.com/jargon/p/program.png',
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Text` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Link` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Lang` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Img` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'https://www.computerhope.com/jargon/p/program.png',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -67,7 +65,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'example 1','really cool example','www.google.com','penis script','https://external-preview.redd.it/y9H8wFuaGD_p2pq2N8nB30bIsbsYM1z0p5Spkr8UDXI.png?auto=webp&s=c793a80d3f2f9ed36adb005724383a3ec8d34610'),(2,'test 2','this is a really really good','www.wikipedia.com','somethign or other','https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTfz3tIfnYqrELwrTFI1kvqcV1n9QYB6HMzJIRf57E5N9I_at2B5MVpuKpK5fnfJWz3n1ZP-hQ8U0avEuU'),(3,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(4,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(5,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(6,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg'),(7,'Freddie is a cat','something something','www.google.com','Brainless','/img/freddie.jpg');
+INSERT INTO `project` VALUES (1,'CPP-EnCryprt','Encryption program written in C++.<br> Works by converting password into a int then adding the password int onto each byte of the file.\r\nSaves the file name in the top of the encrypted file.','https://github.com/dawson270500/CPP-EnCrypt','C++','https://www.computerhope.com/jargon/p/program.png'),(2,'F-TCalc','Terminal calculator written in Fortran. <br> I wrote this mainly just to prove I could use Fortran to write something interesting and that works.','https://github.com/dawson270500/F-TCalc','Fortran','https://www.computerhope.com/jargon/p/program.png'),(3,'OpenText','A text editor that I wrote in C#<br>\r\nUses WinForms to show the GUI.<br>\r\nFeatures:\r\n<ul>\r\n<li>\r\nOpen and save files\r\n</li>\r\n<li>\r\nKeep files open when closed by ticking the keep open box\r\n</li>\r\n<li>\r\nOpen a new window\r\n</li>\r\n</ul><br>\r\n<img src=\"https://i.imgur.com/3Qua0EX.png\">','https://github.com/dawson270500/openText','C#','https://i.imgur.com/3Qua0EX.png'),(4,'Dappageze\'s Website','<p>A website I wrote for a streamer, with a full backend system.</p> <p>Currently hosted on this very server, though we are in the works of sorting him a server out.<br>Written in PHP 8.2, uses MySQL for the database and JavaScript in a couple of places, but not many.</p> \r\n<p>I started writing the site for him long before it went live to his viewers. It allows his viewers to see what games he can play and select a game if they win a weekly competition. The back end allows him to add, remove or edit game entries, as well as grab the password he gives out to the winning viewer in the competition.</p> \r\n<p><img src=\"https://i.imgur.com/s4uja2q.png\" style=\"width: 50%;\"><br>\r\nSee an image of this site above. The style for the website is still under works and we are yet to nail down his colour scheme, but all the functionality is now fully working. Along with the mobile site.</p> \r\n','https://www.baileydawson.uk/dappa/game_list.php','PHP','https://i.imgur.com/s4uja2q.png'),(5,'Space Invaders','<p>This is a space invaders game that I originally wrote a long time ago for college. It was written for a college project that I had to do. I have since improved on it, so this is not all the original code. It took me a long time to get it working again so I can have it on this website for you to play.</p>\r\n<p>The college project I made this for was to make a game in adobe flash, but I thought that was too easy so I wrote this. Originally it did have a high score system which would keep the high scores on a SQL server but the code around that wasn\'t working at all so I have removed it from this version.</p>\r\n<p>I do at one point want to do a full rewrite from the ground, mainly to compare how I have changed as a developer since I have now started working. Could be interesting. Use my contact me page if you think that would be cool</p>\r\n<img src=\"https://i.imgur.com/fea5cKM.png\" style=\"width:50%; height:auto\">','https://www.baileydawson.uk/games/space_invaders/','JavaScript','https://i.imgur.com/fea5cKM.png'),(6,'Justsadcake\'s Website','A website I created for justsadcake, now hosted on its own server.<br> Currently there is a only a poll system which is used for stream goals, the polls keeps a track of who has voted using various pieces of system information to stop people voting more than once.<br> More of the site is under construction still, for example there will be a portfolio to show off her art and a form of contact page for her to accept commissions from.\r\n<img src=\"https://i.imgur.com/6WinFnE.png\" style=\"width:60%;\">\r\n','http://www.justsadcake.co.uk','PHP','https://i.imgur.com/6WinFnE.png'),(7,'Space Invaders ReWrite','<p>The space invaders game has been rewritten finally. This has taken a long time but it is now fully functioning.<br>On the same page you can download the framework I developed to create this game, once I finish writing documentation for this framework I will release it separately. \r\n</p>\r\n<p>For now enjoy this screenshot of a win screen.\r\n<img src=\"https://i.imgur.com/pLmPplc.png\">\r\n</p>','https://www.baileydawson.uk/games/new_space_invaders/','JavaScript','https://i.imgur.com/pLmPplc.png');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -80,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12 21:33:49
+-- Dump completed on 2024-03-19 21:03:14
