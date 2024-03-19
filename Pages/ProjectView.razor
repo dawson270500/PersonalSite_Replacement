@@ -29,7 +29,7 @@
 	<p>@((MarkupString)text)</p>
 	@{
 		if (image != "https://www.computerhope.com/jargon/p/program.png" && !text.Contains("<img")) {
-			@((MarkupString)"<img src=" + image +" /> <!-- Outputted by C# -->")
+			@((MarkupString)"<img src=\"" + image + "\" /><!-- Outputted by C# -->")
 		}
 	}
 	
